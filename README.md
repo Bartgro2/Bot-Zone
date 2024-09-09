@@ -18,4 +18,3 @@
 - **[Custom Bot Status/Presence](https://youtu.be/OqxHy8sCtvA)**
 - **[Claim + droproles with buttons](https://youtu.be/f5DWy0B-y6Q?list=PLpmb-7WxPhe0ZVpH9pxT5MtC4heqej8Es)**
 sdfdfs
-a
