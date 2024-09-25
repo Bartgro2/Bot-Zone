@@ -1,5 +1,12 @@
 # Discord Bot Development Resources (discord.js)
 
+## Ideas/ currently working on
+
+- Threads
+- Webhooks
+- Database thing
+- 
+
 ## What I Learned
 
 - How to use Node.js with `discord.js`
