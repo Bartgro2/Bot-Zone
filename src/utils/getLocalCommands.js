@@ -1,5 +1,5 @@
 const path = require('path');
-const getallFiles = require('./getallFiles');
+const getallFiles = require('./getAllFiles');
 const consoleLog = require('../events/ready/consoleLog');
 
 module.exports = (exceptions = []) => {

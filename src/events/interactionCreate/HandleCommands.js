@@ -1,65 +1,69 @@
 const { devs, testServer } = require('../../../config.json');
 const getLocalCommands = require('../../utils/getLocalCommands');
 
-module.exports = async (client, interaction)  => { 
+module.exports = async (client, interaction) => { 
     if (!interaction.isChatInputCommand()) return;
 
     const localCommands = getLocalCommands();
 
     try {
-      const commandObject = localCommands.find(
-        (cmd) => cmd.name === interaction.commandName);
-      if (!commandObject) return;
+        const commandObject = localCommands.find(cmd => cmd.name === interaction.commandName);
+        if (!commandObject) return;
 
-      if(commandObject.devOnly) {
-        if(!devs.includes(interaction.member.id)) {
-            interaction.reply({
+        // Developer-only command check
+        if (commandObject.devOnly && !devs.includes(interaction.member.id)) {
+            await interaction.reply({
                 content: 'Only developers are allowed to run this command.',
                 ephemeral: true,
             });
             return;
         }
-    }
 
-    if(commandObject.testOnly) {
-        if(!(interaction.guild.id === testServer)) {
-            interaction.reply({
-                content: 'This command cannot be ran here.',
+        // Test server check
+        if (commandObject.testOnly && interaction.guild.id !== testServer) {
+            await interaction.reply({
+                content: 'This command cannot be run here.',
                 ephemeral: true,
             });
             return;
         }
-      }
-    
-      if (commandObject.premissionsRequired?.length) {
-        for (const premission of commandObject.premissionsRequired) {
-            if (!interaction.member.premission.has(premission)) {
-                interaction.reply({
-                    content: 'Not enough premissions.',
-                    ephemeral: true,
-                });
-                break;
+
+        // User permissions check
+        if (commandObject.permissionsRequired?.length) {
+            for (const permission of commandObject.permissionsRequired) {
+                if (!interaction.member.permissions.has(permission)) {
+                    await interaction.reply({
+                        content: 'Not enough permissions.',
+                        ephemeral: true,
+                    });
+                    return;
+                }
             }
         }
-      }
-    
-      if(commandObject.botPremissions?.length){
-        for (const premission of commandObject.botPremissions) {
-          const bot = interaction.guild.members.me;
 
-          if (!bot.botPremissions.has(premission))
-            interaction.reply({
-                content: "I don't have enough premissions.",
-                ephemeral: true,
-            });
-            break;
+        // Bot permissions check
+        if (commandObject.botPermissions?.length) {
+            const bot = interaction.guild.members.me;
+
+            for (const permission of commandObject.botPermissions) {
+                if (!bot.permissions.has(permission)) {
+                    await interaction.reply({
+                        content: "I don't have enough permissions.",
+                        ephemeral: true,
+                    });
+                    return;
+                }
+            }
         }
-      }
 
-    await commandObject.callback(client, interaction);
-    
+        // Execute the command
+        if (typeof commandObject.execute === 'function') {
+            await commandObject.execute(interaction);
+        } else if (typeof commandObject.callback === 'function') {
+            await commandObject.callback(client, interaction);
+        }
+
     } catch (error) {
-      console.log(`There was an error running this command: ${error}`);
-        
+        console.log(`There was an error running this command: ${error}`);
     }
 };

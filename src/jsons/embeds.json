@@ -1,0 +1,21 @@
+{
+    "help": {
+      "title": "Help Command",
+      "description": "Here is a list of available commands.",
+      "color": "Blue",
+      "fields": [
+        { "name": "/help", "value": "Shows this help command", "inline": true },
+        { "name": "/info", "value": "Gives information about the bot", "inline": true }
+      ]
+    },
+    "info": {
+      "title": "Bot Info",
+      "description": "This is some general information about the bot.",
+      "color": "Green",
+      "fields": [
+        { "name": "Info 1", "value": "Details about Info 1", "inline": true },
+        { "name": "Kaas", "value": "Details about Info 2", "inline": true }
+      ]
+    }
+  }
+  
