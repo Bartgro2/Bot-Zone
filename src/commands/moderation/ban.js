@@ -1,6 +1,54 @@
-const {ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.js');
+const {Client, Interaction, ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.js');
 
 module.exports = {
+  /**
+   * 
+   * @param {Client} client 
+   * @param {Interaction} interaction 
+   */
+
+  callback: async (client, interaction) => {
+     const targetUserId = interaction.options.get('target-user').value;
+     const reason = interaction.options.get('reason')?.value || "No reason provided";
+
+     await interaction.deferReply();
+
+     const targetUser = await interaction.guild.members.fetch(targetUserId);
+
+     if (!targetUser) {
+       await interaction.editReply("That user doesn't exist in this server.");
+       return;
+     }
+
+     if (targetUser.id === interaction.guild.ownerId) {
+       await interaction.editReply("You can't ban this user cause they are the server owner.");
+       return;
+     }
+
+     const targetUserRolePosition = targetUser.roles.highest.position; //Highest role of the target user
+     const requestUserRolePosition = interaction.member.roles.highest.position //Highes role of the user running the command
+     const botRolePosition = interaction.guild.members.me.roles.highest.position; //Highest role of the bot
+
+     if (targetUserRolePosition >= requestUserRolePosition) {
+       await interaction.editReply("You can't ban this user cause they have the same/higher role then you.");
+       return;
+     }
+
+     if (targetUserRolePosition >= botRolePosition) {
+       await interaction.editReply("I can't ban this user cause they have the same/higher role then me.");
+       return;
+     }
+    
+     // Ban the targetUser
+
+     try {
+       await targetUser.ban({ reason });
+       await interaction.editReply(`User ${targetUser} was banned\nReason: ${reason}`);
+     } catch (error) {
+       console.log(`There was an error when banning: ${error}`)
+     }
+  },
+  
     name: 'ban',
     description: 'Bans a member from the server',
     //devOnly: Boolean,
@@ -18,11 +66,6 @@ module.exports = {
             type: ApplicationCommandOptionType.String,
          },
     ],
-    permissionsRequired: [PermissionFlagsBits.Administrator],
-    botPremissions: [PermissionFlagsBits.Administrator],
-    
-    callback: (client, interaction) => {
-      interaction.reply('..ban');
-    },
-};
-
+    permissionsRequired: [PermissionFlagsBits.BanMembers],
+    botPremissions: [PermissionFlagsBits.BanMembers], 
+}
