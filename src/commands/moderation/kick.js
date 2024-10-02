@@ -21,7 +21,7 @@ module.exports = {
      }
 
      if (targetUser.id === interaction.guild.ownerId) {
-       await interaction.editReply("You can't ban this user cause they are the server owner.");
+       await interaction.editReply("You can't kick this user cause they are the server owner.");
        return;
      }
 
@@ -30,7 +30,7 @@ module.exports = {
      const botRolePosition = interaction.guild.members.me.roles.highest.position; //Highest role of the bot
 
      if (targetUserRolePosition >= requestUserRolePosition) {
-       await interaction.editReply("You can't ban this user cause they have the same/higher role then you.");
+       await interaction.editReply("You can't kick this user cause they have the same/higher role then you.");
        return;
      }
 
@@ -42,30 +42,30 @@ module.exports = {
      // Ban the targetUser
 
      try {
-       await targetUser.ban({ reason });
-       await interaction.editReply(`User ${targetUser} was banned\nReason: ${reason}`);
+       await targetUser.kick({ reason });
+       await interaction.editReply(`User ${targetUser} was kicked\nReason: ${reason}`);
      } catch (error) {
        console.log(`There was an error when banning: ${error}`)
      }
   },
   
-    name: 'ban',
-    description: 'Bans a member from the server',
+    name: 'kick',
+    description: 'Kicks a member from the server',
     //devOnly: Boolean,
     //testOnly Boolean,
     options: [
         {
            name: 'target-user',
-           description: 'The user you want to ban',
+           description: 'The user you want to kick',
            required: true, 
            type: ApplicationCommandOptionType.Mentionable
         },
         {
             name: 'reason',
-            description: 'The reason for banning',
+            description: 'The reason you want to kick',
             type: ApplicationCommandOptionType.String,
          },
     ],
-    permissionsRequired: [PermissionFlagsBits.BanMembers],
-    botPremissions: [PermissionFlagsBits.BanMembers], 
+    permissionsRequired: [PermissionFlagsBits.KickMembers],
+    botPremissions: [PermissionFlagsBits.KickMembers], 
 }
