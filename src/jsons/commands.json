@@ -1,0 +1,18 @@
+{
+  "misc": {
+    "help": {
+      "name": "help",
+      "description": "Provides help information about the bot commands"
+    },
+    "info": {
+      "name": "info",
+      "description": "Provides information about the bot"
+    }
+  },
+  "moderation": {
+    "warn": {
+      "name": "warn",
+      "description": "Warn a user"
+    }
+  }
+}
