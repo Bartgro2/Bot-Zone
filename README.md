@@ -5,7 +5,6 @@
 - Threads
 - Webhooks
 - Database thing
-- 
 
 ## What I Learned
 
