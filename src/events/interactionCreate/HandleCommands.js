@@ -1,5 +1,6 @@
 const { devs, testServer } = require('../../../config.json');
 const getLocalCommands = require('../../utils/getLocalCommands');
+const { isOnCooldown, setCooldown } = require('../../utils/getCooldown');
 
 module.exports = async (client, interaction) => { 
     if (!interaction.isChatInputCommand()) return;
@@ -9,6 +10,18 @@ module.exports = async (client, interaction) => {
     try {
         const commandObject = localCommands.find(cmd => cmd.name === interaction.commandName);
         if (!commandObject) return;
+
+        // **Cooldown Check**
+        const userId = interaction.user.id; // User's unique identifier
+        const remainingCooldown = isOnCooldown(userId);
+
+        if (remainingCooldown) {
+            await interaction.reply({
+                content: `You're on cooldown! Please wait ${remainingCooldown} seconds before using this command again.`,
+                ephemeral: true,
+            });
+            return;
+        }
 
         // Developer-only command check
         if (commandObject.devOnly && !devs.includes(interaction.member.id)) {
@@ -55,6 +68,9 @@ module.exports = async (client, interaction) => {
                 }
             }
         }
+
+        // **Set Cooldown**
+        setCooldown(userId);
 
         // Execute the command
         if (typeof commandObject.execute === 'function') {
