@@ -1,5 +1,5 @@
 const cooldowns = new Map();
-const DEFAULT_COOLDOWN = 10; // Cooldown in seconds
+const DEFAULT_COOLDOWN = 20; // Cooldown in seconds
 
 function isOnCooldown(userId) {
     const expiresAt = cooldowns.get(userId);
