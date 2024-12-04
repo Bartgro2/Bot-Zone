@@ -1,81 +1,80 @@
 {
-    "reasons": {
-      "Spamming": {
-        "description": "Sending repetitive messages or excessive posting.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "Typing in all caps": {
-        "description": "Using all capital letters in messages.",
-        "applicableActions": ["warn", "kick"]
-      },
-      "Advertising": {
-        "description": "Promoting external services or products without permission.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "NSFW content": {
-        "description": "Sharing sexually explicit content or materials.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "Inappropriate language": {
-        "description": "Using vulgar or obscene language.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "Harassment": {
-        "description": "Targeting another member with malicious intent.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "Disrespecting staff": {
-        "description": "Showing disrespect towards moderators or staff.",
-        "applicableActions": ["warn", "kick"]
-      },
-      "Insubordination": {
-        "description": "Refusing to follow moderator instructions.",
-        "applicableActions": ["warn", "kick"]
-      },
-      "Trolling": {
-        "description": "Intentionally provoking others for amusement.",
-        "applicableActions": ["warn", "kick"]
-      },
-      "Flooding chat": {
-        "description": "Posting multiple messages in quick succession.",
-        "applicableActions": ["warn", "kick"]
-      },
-      "Impersonation": {
-        "description": "Pretending to be another user or staff member.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "Sharing personal information": {
-        "description": "Disclosing someone else's personal information.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "Disruptive behavior": {
-        "description": "Interfering with the normal flow of conversation.",
-        "applicableActions": ["warn", "kick"]
-      },
-      "Ignoring moderator instructions": {
-        "description": "Not following directives given by moderators.",
-        "applicableActions": ["warn", "kick"]
-      },
-      "Using slurs or hate speech": {
-        "description": "Employing discriminatory or derogatory language.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "Excessive toxicity": {
-        "description": "Constantly creating a hostile environment.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "Threatening behavior": {
-        "description": "Making threats towards other members.",
-        "applicableActions": ["warn", "kick", "ban"]
-      },
-      "Provoking fights": {
-        "description": "Instigating conflicts among members.",
-        "applicableActions": ["warn", "kick"]
-      },
-      "Scamming or phishing attempts": {
-        "description": "Attempting to deceive members for personal gain.",
-        "applicableActions": ["warn", "kick", "ban"]
-      }
+  "reasons": {
+    "Spamming": {
+      "description": "Sending repetitive messages or excessive posting.",
+      "applicableActions": ["warn", "timeout", "kick", "ban"]
+    },
+    "Typing in all caps": {
+      "description": "Using all capital letters in messages.",
+      "applicableActions": ["warn", "timeout", "kick"]
+    },
+    "Advertising": {
+      "description": "Promoting external services or products without permission.",
+      "applicableActions": ["warn", "kick", "ban"]
+    },
+    "NSFW content": {
+      "description": "Sharing sexually explicit content or materials.",
+      "applicableActions": ["warn", "kick", "ban"]
+    },
+    "Inappropriate language": {
+      "description": "Using vulgar or obscene language.",
+      "applicableActions": ["warn", "timeout", "kick", "ban"]
+    },
+    "Harassment": {
+      "description": "Targeting another member with malicious intent.",
+      "applicableActions": ["warn", "kick", "ban"]
+    },
+    "Disrespecting staff": {
+      "description": "Showing disrespect towards moderators or staff.",
+      "applicableActions": ["warn", "timeout", "kick"]
+    },
+    "Insubordination": {
+      "description": "Refusing to follow moderator instructions.",
+      "applicableActions": ["warn", "timeout", "kick"]
+    },
+    "Trolling": {
+      "description": "Intentionally provoking others for amusement.",
+      "applicableActions": ["warn", "timeout", "kick"]
+    },
+    "Flooding chat": {
+      "description": "Posting multiple messages in quick succession.",
+      "applicableActions": ["warn", "timeout", "kick"]
+    },
+    "Impersonation": {
+      "description": "Pretending to be another user or staff member.",
+      "applicableActions": ["warn", "kick", "ban"]
+    },
+    "Sharing personal information": {
+      "description": "Disclosing someone else's personal information.",
+      "applicableActions": ["warn", "kick", "ban"]
+    },
+    "Disruptive behavior": {
+      "description": "Interfering with the normal flow of conversation.",
+      "applicableActions": ["warn", "timeout", "kick"]
+    },
+    "Ignoring moderator instructions": {
+      "description": "Not following directives given by moderators.",
+      "applicableActions": ["warn", "timeout", "kick"]
+    },
+    "Using slurs or hate speech": {
+      "description": "Employing discriminatory or derogatory language.",
+      "applicableActions": ["warn", "kick", "ban"]
+    },
+    "Excessive toxicity": {
+      "description": "Constantly creating a hostile environment.",
+      "applicableActions": ["warn", "kick", "ban"]
+    },
+    "Threatening behavior": {
+      "description": "Making threats towards other members.",
+      "applicableActions": ["warn", "kick", "ban"]
+    },
+    "Provoking fights": {
+      "description": "Instigating conflicts among members.",
+      "applicableActions": ["warn", "timeout", "kick"]
+    },
+    "Scamming or phishing attempts": {
+      "description": "Attempting to deceive members for personal gain.",
+      "applicableActions": ["warn", "kick", "ban"]
     }
   }
-  
+}
