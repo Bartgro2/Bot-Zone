@@ -1,21 +1,25 @@
-# Discord Bot Development Resources (discord.js)
+# Discord Bot Development  
 
-## Ideas/ currently working on
+## Overview  
+This project is a custom Discord bot built using **Node.js** and **Discord.js** with **JavaScript** & **Json**. The bot includes various moderation and utility features, with an emphasis on scalability and maintainability.  
 
-- Threads
-- Webhooks
-- Database thing
-- 
+## Features  
+- **Moderation Commands**:  
+  - Ban, Kick, Warn users.  
+  - JSON-driven reasons for moderation actions.  
+- **Utility Commands**:  
+  - Help command for a list of commands.  
+  - Info command for bot or server details.  
+- **JSON Integration**:  
+  - Data-driven embeds (`Embeds.json`).  
+  - Moderation reasons (`Moderation-actions.json`).  
+  - Warnings tracking (`Warnings.json`).  
 
-## What I Learned
+## Upcoming Features  
+- Clear command for bulk-deleting messages.  
+- Enhanced moderation features with JSON-driven logic.  
+- Database integration for persistent data storage.  
 
-- How to use Node.js with `discord.js`
-- What clients are in the Discord API
-- What guilds and gateway intents are
-- How to make slash commands
-- Using the REST API to register commands
-- How to create choice commands
-- How to add options to commands
 
 ## YouTube Tutorials
 
